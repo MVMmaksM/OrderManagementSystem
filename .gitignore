@@ -1,0 +1,10 @@
+/.idea
+/src/CatalogService/Presentation/CatalogService.Api/bin
+/src/CatalogService/Presentation/CatalogService.Api/obj/
+/src/CatalogService/Presentation/CatalogService.Api/appsettings.json
+/src/CatalogService/Core/CatalogService.Application/bin/
+/src/CatalogService/Core/CatalogService.Application/obj/
+/src/CatalogService/Core/CatalogService.Domain/bin/
+/src/CatalogService/Core/CatalogService.Domain/obj/
+src/CatalogService/Infrastructure/CatalogService.Infrastructure/bin/
+src/CatalogService/Infrastructure/CatalogService.Infrastructure/obj/
