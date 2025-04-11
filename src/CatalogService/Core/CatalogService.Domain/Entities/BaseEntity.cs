@@ -8,8 +8,8 @@ namespace CatalogService.Domain.Entities;
 /// <typeparam name="T"></typeparam>
 public abstract class BaseEntity<T> where T : struct
 {
-    private T? _id;
-    public T? Id
+    private T _id;
+    public T Id
     {
         get => _id;
         set

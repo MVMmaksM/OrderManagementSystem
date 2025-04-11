@@ -1,5 +1,5 @@
 using CatalogService.Domain.Entities;
-using CatalogService.Infrastructure.Database.Extensions;
+using CatalogService.Infrastructure.Database.ConfigurationsEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -11,11 +11,17 @@ public class AppDbContext(IConfiguration configuration) : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+        //конфигурируем контекст
+        //уставливаем snake case имена столбцов в БД
+        optionsBuilder
+            .UseNpgsql(configuration.GetConnectionString("postgres_db"))
+            .UseSnakeCaseNamingConvention();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ConfigureProduct();
+        //применим конфигурации для всех классов, реализующих IEntityTypeConfiguration в сборке
+        //где находится ProductEntityConfiguration
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ProductEntityConfiguration).Assembly);
     }
 }
