@@ -7,7 +7,8 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        builder.AddAppServices();
+        builder.AddApiServices();
+        builder.AddInfrastructureServices();
         
         var app = builder.Build();
     
@@ -15,7 +16,7 @@ public class Program
         {
             app.MapOpenApi();
         }
-
+        
         app.UseHttpsRedirection();
         app.UseAuthorization();
         app.MapControllers();
