@@ -1,4 +1,5 @@
 using CatalogService.Extensions;
+using CatalogService.Infrastructure.Extensions;
 
 namespace CatalogService;
 
@@ -7,8 +8,10 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        builder.AddApiServices();
-        builder.AddInfrastructureServices();
+        //добавляем сервисы для слоя api
+        builder.Services.AddApiServices();
+        //добавляем сервисы для слоя infrastructure
+        builder.Services.AddInfrastructureServices();
         
         var app = builder.Build();
     
