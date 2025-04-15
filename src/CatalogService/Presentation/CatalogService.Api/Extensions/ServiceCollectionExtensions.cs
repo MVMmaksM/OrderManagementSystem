@@ -1,3 +1,5 @@
+using CatalogService.Infrastructure.Database;
+
 namespace CatalogService.Extensions;
 
 /// <summary>
@@ -6,10 +8,15 @@ namespace CatalogService.Extensions;
 /// </summary>
 public static class ServiceCollectionExtensions
 {
-    public static WebApplicationBuilder AddAppServices(this WebApplicationBuilder builder)
+    /// <summary>
+    /// добавляем сервисы слоя api
+    /// </summary>
+    /// <param name="services"></param>
+    /// <returns></returns>
+    public static IServiceCollection AddApiServices(this IServiceCollection services)
     {
-        builder.Services.AddControllers();
-        builder.Services.AddOpenApi();
-        return builder;
+        services.AddControllers();
+        services.AddOpenApi();
+        return services;
     }
 }
